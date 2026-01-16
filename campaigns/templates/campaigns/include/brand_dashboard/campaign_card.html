@@ -1,0 +1,5 @@
+<div class="campaign-card shadow-sm">
+      <h6 class="fw-bold">{{ campaign.name }}</h6>
+      <p>{{ campaign.influencer_count }} Influencers • ₹{{ campaign.total_spent |default:"0" }} Spent</p>
+      <a href="{% url "campaign-dashboard-page" campaign.name %}" class="btn btn-sm btn-outline-primary">View Campaign →</a>
+</div>

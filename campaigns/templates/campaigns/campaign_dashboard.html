@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Nike / Back to School Campaign{% endblock %}
+{% block css %}
+<link href="{% static 'campaigns/campaign_dashboard.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <a href="{% url "brand-dashboard-page" brand_name %}" class="btn btn-outline-secondary btn-sm"> <- Back to {{ brand_name }} Dashboard </a>
+  </div>
+
+  <!-- Campaign Summary -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <h5 class="fw-bold">📌 Campaign Summary</h5>
+      <h6 class="campaign-name">Nike Back to School</h6>
+      <p>
+        <strong>Total Influencers:</strong> {{ influencer_count}} &nbsp;&nbsp;
+        <strong>Total Spend:</strong> ₹{{ total_spent }}
+      </p>
+    </div>
+  </div>
+
+<!-- Kanban Columns -->
+<div class="row">
+  <!-- Proposed -->
+  <div class="col-md-4">
+    <div class="kanban-column border-yellow-400">
+      <h6 class="fw-bold">Proposed</h6>
+      {% for proposed in proposed_contracts %}
+        {% include "campaigns/include/campaign_dashboard/proposed.html" %}
+      {% empty %}
+        <div class="kanban-placeholder">No proposed contracts</div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Active -->
+  <div class="col-md-4">
+    <div class="kanban-column border-blue-500">
+      <h6 class="fw-bold">Active</h6>
+      {% for active in active_contracts %}
+        {% include "campaigns/include/campaign_dashboard/active.html" %}
+      {% empty %}
+        <div class="kanban-placeholder">No active contracts</div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Completed -->
+  <div class="col-md-4">
+    <div class="kanban-column border-green-500">
+      <h6 class="fw-bold">Completed</h6>
+      {% for complete in completed_contracts %}
+        {% include "campaigns/include/campaign_dashboard/complete.html" %}
+      {% empty %}
+        <div class="kanban-placeholder">No completed contracts</div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

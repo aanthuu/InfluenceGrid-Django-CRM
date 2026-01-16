@@ -1,0 +1,11 @@
+<div class="col-md-4 mb-3">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h6 class="fw-bold">{{ brand.name }}</h6>
+          <p>Budget: ₹{{ brand.budget }}</p>
+          <p>Spent: ₹{{ brand.total_spend | default:"0"}} </p>
+          <p>Active: {{ brand.campaign_count }}</p>
+          <a href="{% url "brand-dashboard-page" brand.name %}" class="btn btn-sm btn-outline-primary">View →</a>
+        </div>
+      </div>
+</div>

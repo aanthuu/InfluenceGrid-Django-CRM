@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title%}Dashboard{% endblock%}
+{% block css %}<link href="{% static "campaigns/index.css"%}" rel="stylesheet">{% endblock %}
+{% block content %}
+
+
+<div class="container my-5">
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h4 class="fw-bold">INFLUENCEGRID</h4>
+    <span class="badge bg-primary">👤 Ananthu</span>
+  </div>
+
+  <!-- Overview Section -->
+  <h5 class="mb-3">📊 Overview</h5>
+  <div class="row text-center mb-4">
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h6 class="fw-bold">Brands</h6>
+          <p class="fs-4">{{ total_brands }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h6 class="fw-bold">Active Campaigns</h6>
+          <p class="fs-4">{{ active_campaigns }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h6 class="fw-bold">Total Spend</h6>
+          <p class="fs-4"> ₹{{ total_brands_spent }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Brands Section -->
+  <h5 class="mb-3">🏷️ Brands</h5>
+  <div class="row">
+    <!-- Brands -->
+    {% for brand in brand_details %}
+    {% include "campaigns/include/brand_card.html" %}
+    {% endfor %}
+  </div>
+</div>
+
+
+{% endblock %}
